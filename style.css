@@ -42,9 +42,9 @@ body {
     width: 90%;
     height: 85%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
     background-color: rgba(155, 225, 243, 0.354);
     border-radius: 40px;
     padding: 20px;
@@ -52,28 +52,28 @@ body {
 
 /* search section */
 .search-div {
-    width: 100%;
-    height: 100px;
+    width: 50%;
+    height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    gap: 10px;
+    justify-content: center;
+    gap: 50px;
     background-color: rgba(252, 252, 252, 0.498);
-    border-radius: 40px;
+    border-radius: 20px;
     padding: 10px;
 }
 
 .search-div form {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     height: auto;
-    gap: 20px;
+    gap: 30px;
 }
 
 form input {
     width: 60%;
-    height: 30px;
+    height: 40px;
     border-radius: 20px;
     padding: 10px;
     border: none;
@@ -81,7 +81,7 @@ form input {
 
 form button {
     width: 20%;
-    height: 30px;
+    height: 40px;
     border-radius: 20px;
     border: none;
     transition: all 0.2s linear;
@@ -91,11 +91,16 @@ form button:hover {
     background: yellow;
 }
 
+#button-div {
+    width: 100%;
+    height: 15%;
+    text-align: center;
+}
+
 #current-location {
     width: 50%;
-    margin: auto;
-    height: 30%;
-    border-radius: 20px;
+    height: 90%;
+    border-radius: 10px;
     border: none;
     transition: all 0.2s linear;
 }
@@ -104,12 +109,34 @@ form button:hover {
     background: yellow;
 }
 
+
 /* weather details section */
 .weather-div {
     width: 100%;
-    height: 80%;
-    background-color: black;
-    background-color: rgba(252, 252, 252, 0.498);
+    height: 100%;
     border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
 }
 
+.current-weather-div {
+    /* background-color: black; */
+    width: 100%;
+    height: 50%;
+}
+
+#img-div {
+    width: 80%;
+}
+
+#info {
+    width: 100%;
+}
+
+.forcast-div {
+    /* background-color: black; */
+    width: 100%;
+    height: 50%;
+}
