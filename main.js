@@ -27,7 +27,7 @@ window.onload = function() {
                         .then(response => response.json())
                         .then(data => {
                           
-                            // filter the forcasts
+                            // filter the forcasts for five days
                             const forcastDays = [];
                             const fiveForcasts = data.list.filter((forecast) => {
                                 const forecastDate = new Date(forecast.dt_txt).getDate();
@@ -65,6 +65,37 @@ window.onload = function() {
                             const img = document.getElementById("w-icon");
                             img.src = `https://openweathermap.org/img/wn/${liveWeather[0].weather[0].icon}@2x.png`;
 
+                            // Day or Night
+                            // time
+                            const partDayP = document.getElementById("partDay");
+                            let hours = new Date().getHours();
+                            partDayP.innerHTML = `${hours}`;
+
+                            if (hours > 12 && hours <= 18) {
+                                partDayP.innerHTML = 'Afternoon';
+                            }
+                            else if (hours > 18 && hours <= 20) {
+                                partDayP.innerHTML = 'Evening';
+                                
+                            }
+                            else if (hours > 20 && hours <= 5) {
+                                partDayP.innerHTML = 'Night';
+                                
+                            }
+                            else if (hours > 6 && hours <= 12) {
+                                partDayP.innerHTML = 'Morning';
+                                
+                            }
+
+                            // day
+                            const day = new Date().getDay();
+                            const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                            const toDay = dayArr[day];
+                            
+                            const dayP = document.getElementById("toDay");
+                            dayP.innerHTML = `${toDay}`
+                            
+
                             // description
                             const describP = document.getElementById("description");
                             const description = liveWeather[0].weather[0].description;
@@ -73,44 +104,34 @@ window.onload = function() {
                             // visibility
                             const visibleP = document.createElement("p");
                             const visibility = Math.trunc(liveWeather[0].visibility / 1000);
-                            visibleP.innerHTML = `visibility: ${visibility} Km`;
+                            visibleP.innerHTML = `visibility: ${visibility} Km`;   
                             describP.appendChild(visibleP);
                            
                            
                             // temperature
                             const temp = document.getElementById("temp");
                             temperature = liveWeather[0].main.temp;
-                            temp.innerHTML = `${Math.trunc(temperature)}deg`
+                            temp.innerHTML = `  ${Math.trunc(temperature)}&deg`
 
                             // wind Speed
                             const windP = document.getElementById("wind");
                             const wind = liveWeather[0].wind.speed;
-                            windP.innerHTML = `${Math.round(wind)}`;
+                            windP.innerHTML = `  ${Math.round(wind)} m/s`;
 
                             // humidity
                             const humidP = document.getElementById("humidity");
                             const humidity = liveWeather[0].main.humidity;
-                            humidP.innerHTML = `${Math.round(humidity)}`;
+                            humidP.innerHTML = `  ${Math.round(humidity)} %`;
 
                             
                             // five day forecasts array passing to the callback function
                             fiveForcasts.shift();
                             const newFiveForcasts = [fiveForcasts];
+                            
+                            
                             callback(newFiveForcasts);
                             
                             
-
-                            // for (let i = 1; i <= fiveForcasts.length; i++) {
-                            //     const headingH2 = document.getElementById("heading");
-                            //     const wDiv = document.createElement("div");
-                            //     wDiv.innerHTML = `${fiveForcasts[i].main['temp']}`;
-                            //     headingH2.appendChild(wDiv); 
-                            // }
-
-                            
-                            // const headingH2 = document.getElementById("")
-
-                            // console.log(forcastDays)
                             console.log(liveWeather)
 
 
@@ -121,13 +142,17 @@ window.onload = function() {
                 
             }
 
-            
+            // loading animation
+            const forecastDiv = document.getElementById("five-forecast");
+            const lDiv = document.createElement("span");
+            lDiv.style.display = "block";
+            lDiv.classList.add("load")
+            forecastDiv.appendChild(lDiv);
 
             function fiveForcasts(newFiveForcasts) {
 
                 const arr = [newFiveForcasts[0]];
-                
-                
+                lDiv.style.display = "none";
                 
                 arr[0].forEach(x => {
                     

@@ -82,7 +82,7 @@ form input {
 form button {
     width: 20%;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 10px;
     border: none;
     transition: all 0.2s linear;
 }
@@ -134,9 +134,13 @@ form button:hover {
 
 #img-div {
     width: 80%;
-    color: skyblue;
+    color: yellow;
     font-weight: bolder;
     font-size: 20px;
+}
+
+#description {
+    backdrop-filter: blur(10px);
 }
 
 #info {
@@ -170,8 +174,9 @@ form button:hover {
     transition: all 0.2s linear;
 }
 
-#five-forecast>div:hover {
-    
+#five-forecast > div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 10px 5px white;
 }
 
 #five-forecast>div:nth-child(1) {
@@ -194,4 +199,27 @@ form button:hover {
 
 #five-forecast>div:nth-child(5) {
     background-color: rgb(115, 47, 193);
+}
+
+#five-forecast>div:nth-child(6) {
+    background-color: rgb(31, 146, 156);
+}
+
+.load {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 3px solid skyblue;
+    border-bottom: black;
+    border-top: black;
+    animation: loading 2s linear infinite;
+}
+
+
+/* loading animation */
+@keyframes loading {
+    100% {
+        transform: rotate(360deg); 
+    }
 }
