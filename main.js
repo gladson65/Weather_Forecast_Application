@@ -13,9 +13,71 @@ window.onload = function() {
     for (var i = 1; i <= 5; i++) {
         let get = localStorage.getItem(`${i}`);
         let dropdownP = document.createElement("p");
+        
         dropdownP.innerHTML = `${get.slice(1, -1)}`;
+        // dropdownP.setAttribute("onclick",`display${i}`);
+        dropdownP.classList.add(`dropCity`)
         dropdown.appendChild(dropdownP);
     }
+
+    // let dropCity = document.querySelector(".dropCity1").value;
+    // dropCity.addEventListener("click", () => {
+    //     console.log(dropCity);
+    // })
+    
+    const dropCity = document.querySelectorAll(".dropCity");
+    
+
+    // dropCity1.addEventListener('click', () => {
+    //     console.log(dropCity1.innerText);
+    //     city = `${dropCity1.innerText}`;
+    //     let inputValue = document.querySelector(".inputValue");
+    //     inputValue.setAttribute("value", `${city}`)
+        
+    // })
+
+    // const dropCity2 = document.querySelector(".dropCity2");
+    // dropCity2.addEventListener('click', () => {
+    //     console.log(dropCity2.innerText);
+    //     city = `${dropCity2.innerText}`;
+    //     let inputValue = document.querySelector(".inputValue");
+    //     inputValue.setAttribute("value", `${city}`)
+
+    // })
+
+    // const dropCity3 = document.querySelector(".dropCity3");
+    // dropCity1.addEventListener('click', () => {
+    //     console.log(dropCity3.innerText);
+    //     city = `${dropCity3.innerText}`;
+    //     let inputValue = document.querySelector(".inputValue");
+    //     inputValue.setAttribute("value", `${city}`)
+
+    // })
+
+    // const dropCity4 = document.querySelector(".dropCity4");
+    // dropCity1.addEventListener('click', () => {
+    //     console.log(dropCity4.innerText);
+    //     city = `${dropCity4.innerText}`;
+    //     let inputValue = document.querySelector(".inputValue");
+    //     inputValue.setAttribute("value", `${city}`)
+
+    // })
+
+    // const dropCity5 = document.querySelector(".dropCity5");
+    // dropCity1.addEventListener('click', () => {
+    //     console.log(dropCity5.innerText);
+    //     city = `${dropCity5.innerText}`;
+    //     let inputValue = document.querySelector(".inputValue");
+    //     inputValue.setAttribute("value", `${city}`)
+
+    // })
+      
+    
+
+    
+    
+    
+    
     
     
     // select input
@@ -27,25 +89,33 @@ window.onload = function() {
     })
     // input on blur
     inputValue.addEventListener("blur", () => {
-        dropdown.style.display = "none"; 
+        setTimeout(() => {
+            dropdown.style.display = "none";
+        }, 1000);
     })
     
     
-    // search click event
+    
+    // search button click event
     searchButton.addEventListener("click", function(e) {
         e.preventDefault();
 
-        
+        // hide dropdown div
+        dropdown.style.display = "none";
+
         // hide search button
         searchButton.style.display = "none";
         // display Refresh button
         refreshButton.style.display = "block";
 
         // take input value
+        
         let inputValue = document.querySelector(".inputValue").value;
         let value = inputValue.trim();
+
         
-        
+        // disabled input field
+        document.querySelector(".inputValue").disabled = true;
         // data preparation to store into the local storage
         
         
@@ -177,7 +247,7 @@ window.onload = function() {
                             let randomNumber = Math.round(Math.random() * 5);
                             localStorage.setItem(`${randomNumber}`, JSON.stringify(value))
                             
-
+                           
                             
                             console.log(liveWeather)
 
