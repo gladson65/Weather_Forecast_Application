@@ -30,11 +30,15 @@
         <div class="container">
             
             <!-- search section -->
-            <div class="search-div">
+            <div class="search-div relative">
                 <form action="#">
                     <input type="text" class="inputValue" id="city" placeholder="Search City">
                     <button type="button" class="bg-lime-500"  id="search-btn">Search</button>
+                    <button type="button" class="bg-lime-500" id="Refresh-btn">Refresh</button>
                 </form>
+                <div id="dropdown" class="absolute left-3 bottom-7 flex flex-col justify-start text-center text-white">
+                    
+                </div>
                 <div id="button-div">
                     <button type="button" class="btn bg-blue-500" id="current-location">Current Location</button>
                 </div>

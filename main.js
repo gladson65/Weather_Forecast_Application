@@ -1,18 +1,56 @@
+
 window.onload = function() {
 
     // select search button
     const searchButton = document.getElementById("search-btn");
-
+    
+    // select RefreshButton
+    const refreshButton = document.getElementById("Refresh-btn");
+    
+    // dropdown div
+    const dropdown = document.getElementById("dropdown");
+    
+    for (var i = 1; i <= 5; i++) {
+        let get = localStorage.getItem(`${i}`);
+        let dropdownP = document.createElement("p");
+        dropdownP.innerHTML = `${get.slice(1, -1)}`;
+        dropdown.appendChild(dropdownP);
+    }
+    
+    
+    // select input
+    let inputValue = document.querySelector(".inputValue")
+    inputValue.addEventListener("focus", () => {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.style.display = "block";
+        
+    })
+    // input on blur
+    inputValue.addEventListener("blur", () => {
+        dropdown.style.display = "none"; 
+    })
+    
+    
+    // search click event
     searchButton.addEventListener("click", function(e) {
         e.preventDefault();
 
+        
+        // hide search button
+        searchButton.style.display = "none";
+        // display Refresh button
+        refreshButton.style.display = "block";
 
         // take input value
         let inputValue = document.querySelector(".inputValue").value;
         let value = inputValue.trim();
-
-        // flag for live report
-        var flag = false;
+        
+        
+        // data preparation to store into the local storage
+        
+        
+        
+        
 
         if (value.length > 0) {
             // get Coordinates
@@ -21,8 +59,9 @@ window.onload = function() {
                 let data = await response.json();
                 // destructuring for CityName, longitude, latitude
                 let {name, lat, lon} = data[0];
-
+                
                 if (name) {
+        
                     fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=bfc3d2331cbfea5b3fffe45863963901`)
                         .then(response => response.json())
                         .then(data => {
@@ -67,22 +106,22 @@ window.onload = function() {
 
                             // Day or Night
                             // time
-                            const partDayP = document.getElementById("partDay");
+                            let partDayP = document.getElementById("partDay");
                             let hours = new Date().getHours();
                             partDayP.innerHTML = `${hours}`;
 
-                            if (hours > 12 && hours <= 18) {
+                            if (hours > 12 && hours < 18) {
                                 partDayP.innerHTML = 'Afternoon';
                             }
-                            else if (hours > 18 && hours <= 20) {
+                            else if (hours >= 18 && hours < 20) {
                                 partDayP.innerHTML = 'Evening';
                                 
                             }
-                            else if (hours > 20 && hours <= 5) {
+                            else if (hours >= 20 && hours < 5) {
                                 partDayP.innerHTML = 'Night';
                                 
                             }
-                            else if (hours > 6 && hours <= 12) {
+                            else if (hours >= 5 && hours <= 12) {
                                 partDayP.innerHTML = 'Morning';
                                 
                             }
@@ -112,35 +151,48 @@ window.onload = function() {
                             const temp = document.getElementById("temp");
                             temperature = liveWeather[0].main.temp;
                             temp.innerHTML = `  ${Math.trunc(temperature)}&deg`
+                            temp.style.fontSize = "30px";
 
                             // wind Speed
                             const windP = document.getElementById("wind");
                             const wind = liveWeather[0].wind.speed;
                             windP.innerHTML = `  ${Math.round(wind)} m/s`;
+                            windP.style.fontSize = "30px";
 
                             // humidity
                             const humidP = document.getElementById("humidity");
                             const humidity = liveWeather[0].main.humidity;
                             humidP.innerHTML = `  ${Math.round(humidity)} %`;
+                            humidP.style.fontSize = "30px";
 
                             
                             // five day forecasts array passing to the callback function
                             fiveForcasts.shift();
                             const newFiveForcasts = [fiveForcasts];
                             
-                            
+                            //passing data to fiveForcasts function
                             callback(newFiveForcasts);
+
+                            // store into local storage
+                            let randomNumber = Math.round(Math.random() * 5);
+                            localStorage.setItem(`${randomNumber}`, JSON.stringify(value))
                             
+
                             
                             console.log(liveWeather)
 
 
                         }).catch((error) => {
-                            console.log("Error Occurred", error)
+                            const forecastDiv = document.getElementById("five-forecast");
+                            forecastDiv.innerHTML = "<h1 style='text-align: center;'>SORRY, NO DATA FOUND!!! Try leter...</h1>";
+                            forecastDiv.style.color = "red";
+                            forecastDiv.style.textAlign = "center";
                         })  
                 }
                 
             }
+
+            
 
             // loading animation
             const forecastDiv = document.getElementById("five-forecast");
@@ -149,10 +201,15 @@ window.onload = function() {
             lDiv.classList.add("load")
             forecastDiv.appendChild(lDiv);
 
+
+            
+
+            // display five day forecast
             function fiveForcasts(newFiveForcasts) {
 
                 const arr = [newFiveForcasts[0]];
                 lDiv.style.display = "none";
+                
                 
                 arr[0].forEach(x => {
                     
@@ -168,7 +225,7 @@ window.onload = function() {
                     // weather icon
                     const icon = document.createElement("img");
                     icon.src = `https://openweathermap.org/img/wn/${x.weather[0].icon}@2x.png`;
-                    icon.style.textAlign = "center";
+                    icon.style.margin = "0 auto";
 
                     // weather description
                     const wdP = document.createElement("p");
@@ -178,17 +235,17 @@ window.onload = function() {
                     const forcastDivs = document.createElement("div");
                     // temperature
                     const tempP = document.createElement("p");
-                    tempP.innerHTML = `${x.main.temp}`;
+                    tempP.innerHTML = `<i class="fa-solid fa-temperature-high" style="color: yellow; font-size:15px"></i> ${Math.trunc(x.main.temp)}`;
                     tempP.style.textAlign = "center";
 
                     // wind
                     const windP = document.createElement("p");
-                    windP.innerHTML = `${x.wind.speed}`;
+                    windP.innerHTML = `<i class="fa-solid fa-wind" style="color: black; font-size:15px"></i> ${Math.round(x.wind.speed)}`;
                     windP.style.textAlign = "center";
 
                     //humidity
                     const humidP = document.createElement("p");
-                    humidP.innerHTML = `${Math.round(x.main.humidity)}`;
+                    humidP.innerHTML = `<i class="fa-solid fa-droplet" style="color: black; font-size:15px"></i> ${Math.round(x.main.humidity)}`;
                     humidP.style.textAlign = "center";
                     
                     forcastDivs.appendChild(dateP);
@@ -217,6 +274,19 @@ window.onload = function() {
         
 
         
+    })
+
+
+    // Refresh click event
+    refreshButton.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        // display search button
+        searchButton.style.display = "block";
+        // hide refresh button
+        refreshButton.style.display = "none";
+
+        window.location.reload()
     })
 
 
