@@ -1,6 +1,6 @@
 
 window.onload = function() {
-
+    
     // select search button
     const searchButton = document.getElementById("search-btn");
     
@@ -10,8 +10,10 @@ window.onload = function() {
     // dropdown div
     const dropdown = document.getElementById("dropdown");
     
+    
+    
     for (var i = 1; i <= 5; i++) {
-        let get = localStorage.getItem(`${i}`);
+        let get = (!localStorage.getItem(`${i}`)) ? "cKolkatac" : localStorage.getItem(`${i}`);
         let dropdownP = document.createElement("p");
         
         dropdownP.innerHTML = `${get.slice(1, -1)}`;
@@ -20,63 +22,19 @@ window.onload = function() {
         dropdown.appendChild(dropdownP);
     }
 
-    // let dropCity = document.querySelector(".dropCity1").value;
-    // dropCity.addEventListener("click", () => {
-    //     console.log(dropCity);
-    // })
+    
     
     const dropCity = document.querySelectorAll(".dropCity");
-    
-
-    // dropCity1.addEventListener('click', () => {
-    //     console.log(dropCity1.innerText);
-    //     city = `${dropCity1.innerText}`;
-    //     let inputValue = document.querySelector(".inputValue");
-    //     inputValue.setAttribute("value", `${city}`)
-        
-    // })
-
-    // const dropCity2 = document.querySelector(".dropCity2");
-    // dropCity2.addEventListener('click', () => {
-    //     console.log(dropCity2.innerText);
-    //     city = `${dropCity2.innerText}`;
-    //     let inputValue = document.querySelector(".inputValue");
-    //     inputValue.setAttribute("value", `${city}`)
-
-    // })
-
-    // const dropCity3 = document.querySelector(".dropCity3");
-    // dropCity1.addEventListener('click', () => {
-    //     console.log(dropCity3.innerText);
-    //     city = `${dropCity3.innerText}`;
-    //     let inputValue = document.querySelector(".inputValue");
-    //     inputValue.setAttribute("value", `${city}`)
-
-    // })
-
-    // const dropCity4 = document.querySelector(".dropCity4");
-    // dropCity1.addEventListener('click', () => {
-    //     console.log(dropCity4.innerText);
-    //     city = `${dropCity4.innerText}`;
-    //     let inputValue = document.querySelector(".inputValue");
-    //     inputValue.setAttribute("value", `${city}`)
-
-    // })
-
-    // const dropCity5 = document.querySelector(".dropCity5");
-    // dropCity1.addEventListener('click', () => {
-    //     console.log(dropCity5.innerText);
-    //     city = `${dropCity5.innerText}`;
-    //     let inputValue = document.querySelector(".inputValue");
-    //     inputValue.setAttribute("value", `${city}`)
-
-    // })
+    dropCity.forEach((x) => {
+        x.addEventListener("click", () => {
+            let city = `${x.innerText}`;
+            let inputValue = document.querySelector(".inputValue");
+            inputValue.setAttribute("value", `${city}`);
+            let randomNum = Math.round(Math.random()*5);
+            localStorage.setItem(`${randomNum}`, `"${city.toLowerCase()}"`);
+        })
+    })
       
-    
-
-    
-    
-    
     
     
     
@@ -91,7 +49,7 @@ window.onload = function() {
     inputValue.addEventListener("blur", () => {
         setTimeout(() => {
             dropdown.style.display = "none";
-        }, 1000);
+        }, 500);
     })
     
     
@@ -127,9 +85,20 @@ window.onload = function() {
             async function fetchData(callback) {
                 let response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=1&appid=bfc3d2331cbfea5b3fffe45863963901`);
                 let data = await response.json();
+
+                // if data value is undefined due to wrong naming of the city
+                if (data[0] == undefined || data[0] == null) {
+                    const forecastDiv = document.getElementById("five-forecast");
+                    forecastDiv.innerHTML = "<p style='text-align:center; font-size: 1.8rem; font-weight:bold; color:yellow; margin: 0 auto;'>Please provide correct name of the city</p>"
+
+                    return;                
+                }
+
                 // destructuring for CityName, longitude, latitude
                 let {name, lat, lon} = data[0];
                 
+                
+
                 if (name) {
         
                     fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=bfc3d2331cbfea5b3fffe45863963901`)
@@ -261,6 +230,7 @@ window.onload = function() {
                 }
                 
             }
+            
 
             
 

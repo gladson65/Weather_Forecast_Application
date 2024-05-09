@@ -77,6 +77,9 @@ form input {
     border-radius: 20px;
     padding: 10px;
     border: none;
+    background-color: black;
+    color: yellow;
+    font-weight: bolder;
 }
 
 #dropdown {
@@ -141,15 +144,18 @@ form button:hover {
 }
 
 #current-location {
-    width: 50%;
+    width: auto;
     height: 90%;
     border-radius: 10px;
     border: none;
+    background-color: #3291a8;
+    color:whitesmoke;
     transition: all 0.2s linear;
 }
 
 #current-location:hover {
     background: rgb(0, 255, 174);
+    color: black;
 }
 
 
