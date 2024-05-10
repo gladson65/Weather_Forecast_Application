@@ -1,6 +1,6 @@
 # Weather Forecast App
 
-Hello, this is a simple weather forecast app in HTML, CSS, Tailwind CSS and JavaScript.
+Hello, this is a simple weather forecast app called 'Weather Track' in HTML, CSS, Tailwind CSS and JavaScript.
 
 ## Features in this app
 
