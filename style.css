@@ -77,7 +77,6 @@ form input {
     border-radius: 20px;
     padding: 10px;
     border: none;
-    background-color: black;
     color: yellow;
     font-weight: bolder;
 }
@@ -254,6 +253,11 @@ form button:hover {
     background-color: rgb(31, 146, 156);
 }
 
+/* .current-weather-div {
+    transition: all 0.2s linear;
+    animation: run 5s linear infinite;
+} */
+
 .load {
     width: 150px;
     height: 150px;
@@ -266,9 +270,43 @@ form button:hover {
 }
 
 
+@media(min-width:768px) and (max-width:1024px) {
+    #dropdown {
+        /* background-color:transparent; */
+        bottom: 17%;
+        left: 10%;
+        height: 40%;
+        width: 56%;
+    }
+    #dropdown>p {
+        width: auto;
+        height: auto;
+        font-size: larger;
+        font-weight: bold;
+        background-color: rgba(214, 225, 218, 0.74);
+    }
+
+    #button-div {
+        height: 25%;
+    }
+    #current-location {
+        width: 50%;
+        letter-spacing: 0.2rem;
+    }
+   
+}
+
+
 /* loading animation */
 @keyframes loading {
     100% {
         transform: rotate(360deg); 
+    }
+}
+
+/* weather background image animation */
+@keyframes run {
+    100% {
+        transform: rotate(360deg);
     }
 }

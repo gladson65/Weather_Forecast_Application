@@ -61,6 +61,10 @@ window.onload = function() {
         // hide dropdown div
         dropdown.style.display = "none";
 
+        // hide my location button
+        let currentButton = document.getElementById("current-location").disabled = true;
+        let cButton = document.getElementById("current-location");
+        cButton.innerHTML = "Click the refresh button"
         // hide search button
         searchButton.style.display = "none";
         // display Refresh button
@@ -112,7 +116,7 @@ window.onload = function() {
                                 }
                             })
 
-                            console.log(forcastDays);
+                            console.log(fiveForcasts);
                             
                             const todayForcast = [];
                             const today = data.list.filter((todayReport) => {
@@ -124,6 +128,7 @@ window.onload = function() {
                                 }
                             })
                             
+                            // tracking time after every 3 hours
                             const currentArr = [];
                             const currentTime = todayForcast.filter((current) => {
                                 const weatherTime = new Date(current.dt_txt).getHours();
@@ -132,8 +137,8 @@ window.onload = function() {
                                     return currentArr.push(current)
                                 }
                             })
-
                             
+                            //take last 3 hours time update
                             const liveWeather = [currentArr[currentArr.length - 1]];
                             
                             // show live data
@@ -154,22 +159,33 @@ window.onload = function() {
                                 partDayP.innerHTML = 'Evening';
                                 
                             }
-                            else if (hours >= 20 && hours < 5) {
+                            else if (hours >= 20 && hours < 24) {
                                 partDayP.innerHTML = 'Night';
                                 
+                            }
+                            else if (hours >= 1 && hours < 3) {
+                                partDayP.innerHTML = 'Midnight';
+
+                            }
+                            else if (hours >= 3 && hours < 5) {
+                                partDayP.innerHTML = 'Dawn';
+
                             }
                             else if (hours >= 5 && hours <= 12) {
                                 partDayP.innerHTML = 'Morning';
                                 
                             }
 
-                            // day
-                            const day = new Date().getDay();
+                            // Display current Day name
                             const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                            const toDay = dayArr[day];
+                            
+                            const currentD = currentArr[0].dt_txt;
+                            const currentDArr = currentD.split(" ");
+                            let cDate = `${currentDArr[0]}`;
+                            let newDate = dayArr[new Date(cDate).getDay()];
                             
                             const dayP = document.getElementById("toDay");
-                            dayP.innerHTML = `${toDay}`
+                            dayP.innerHTML = `${newDate}`
                             
 
                             // description
@@ -188,18 +204,21 @@ window.onload = function() {
                             const temp = document.getElementById("temp");
                             temperature = liveWeather[0].main.temp;
                             temp.innerHTML = `  ${Math.trunc(temperature)}&deg`
+                            temp.setAttribute("class", "max-lg:text-sm");
                             temp.style.fontSize = "30px";
 
                             // wind Speed
                             const windP = document.getElementById("wind");
                             const wind = liveWeather[0].wind.speed;
                             windP.innerHTML = `  ${Math.round(wind)} m/s`;
+                            windP.setAttribute("class", "max-lg:text-sm");
                             windP.style.fontSize = "30px";
 
                             // humidity
                             const humidP = document.getElementById("humidity");
                             const humidity = liveWeather[0].main.humidity;
                             humidP.innerHTML = `  ${Math.round(humidity)} %`;
+                            humidP.setAttribute("class", "max-lg:text-sm");
                             humidP.style.fontSize = "30px";
 
                             
@@ -207,7 +226,9 @@ window.onload = function() {
                             fiveForcasts.shift();
                             const newFiveForcasts = [fiveForcasts];
                             
+                            
                             //passing data to fiveForcasts function
+                            // newFiveForcasts.shift();
                             callback(newFiveForcasts);
 
                             // store into local storage
@@ -246,6 +267,7 @@ window.onload = function() {
             function fiveForcasts(newFiveForcasts) {
 
                 const arr = [newFiveForcasts[0]];
+
                 lDiv.style.display = "none";
                 
                 
@@ -306,7 +328,10 @@ window.onload = function() {
             
         }    
         else {
-            console.log("Please provide a city name");
+            const forecastDiv = document.getElementById("five-forecast");
+            forecastDiv.innerHTML = "<h1 style='text-align:center; margin:0 auto; font-size:20px'>Please type a city name</h1>";
+            forecastDiv.style.color = "yellow";
+            forecastDiv.style.textAlign = "center";
         }
 
         
@@ -334,6 +359,9 @@ window.onload = function() {
     let currentButton = document.getElementById("current-location");
     currentButton.addEventListener("click", function (e) {
         e.preventDefault();
+
+        // disabled input field
+        document.querySelector(".inputValue").disabled = true;
 
         // change text of the current location button
         let currentButton = document.getElementById("current-location");
@@ -416,8 +444,16 @@ window.onload = function() {
                                 partDayP.innerHTML = 'Evening';
 
                             }
-                            else if (hours >= 20 && hours < 5) {
+                            else if (hours >= 20 && hours < 24) {
                                 partDayP.innerHTML = 'Night';
+
+                            }
+                            else if (hours >= 1 && hours < 3) {
+                                partDayP.innerHTML = 'Midnight';
+
+                            }
+                            else if (hours >= 3 && hours < 5) {
+                                partDayP.innerHTML = 'Dawn';
 
                             }
                             else if (hours >= 5 && hours <= 12) {
@@ -466,7 +502,6 @@ window.onload = function() {
 
 
                             // five day forecasts array passing to the callback function
-                            fiveForcasts.shift();
                             const newFiveForcasts = [fiveForcasts];
 
                             //passing data to fiveForcasts function
@@ -480,9 +515,8 @@ window.onload = function() {
 
                     }).catch((error) => {
                         const forecastDiv = document.getElementById("five-forecast");
-                        forecastDiv.innerHTML = "<h1 style='text-align: center;'>SORRY, NO DATA FOUND!!! Try leter...</h1>";
-                        forecastDiv.style.color = "red";
-                        forecastDiv.style.textAlign = "center";
+                        forecastDiv.innerHTML = "<h1 style='text-align: center; margin:0 auto;'>SORRY, NO DATA FOUND!!! Try again...</h1>";
+                        forecastDiv.style.color = "red"
                         console.log(error)
                     })
                     
@@ -504,12 +538,15 @@ window.onload = function() {
 
                 // display five day forecast
                 function fiveForcasts(newFiveForcasts) {
-
+                     
                     const arr = [newFiveForcasts[0]];
+                    // if the arr length is 5 then it remains same but when it's gettig 6 it's shift the previous day.
+                    const newArr = [arr[0].length == 6 ? arr[0].slice(1) : arr[0]];
+                   
                     lDiv.style.display = "none";
 
 
-                    arr[0].forEach(x => {
+                    newArr[0].forEach(x => {
 
                         const forecastDiv = document.getElementById("five-forecast");
 
