@@ -91,7 +91,7 @@ window.onload = function() {
                 // if data value is undefined due to wrong naming of the city
                 if (data[0] == undefined || data[0] == null) {
                     const forecastDiv = document.getElementById("five-forecast");
-                    forecastDiv.innerHTML = "<p style='text-align:center; font-size: 1.8rem; font-weight:bold; color:yellow; margin: 0 auto;'>Please provide correct name of the city</p>"
+                    forecastDiv.innerHTML = `<p style='text-align:center; font-size: 1.8rem; font-weight:bold; color:yellow; margin: 0 auto;'>Please type correct city name</p>`
 
                     return;                
                 }
@@ -204,22 +204,22 @@ window.onload = function() {
                             const temp = document.getElementById("temp");
                             temperature = liveWeather[0].main.temp;
                             temp.innerHTML = `  ${Math.trunc(temperature)}&deg`
-                            temp.setAttribute("class", "max-lg:text-sm");
-                            temp.style.fontSize = "30px";
+                            temp.setAttribute("class", "max-lg:text-sm max-sm:text-sm");
+                            
 
                             // wind Speed
                             const windP = document.getElementById("wind");
                             const wind = liveWeather[0].wind.speed;
                             windP.innerHTML = `  ${Math.round(wind)} m/s`;
-                            windP.setAttribute("class", "max-lg:text-sm");
-                            windP.style.fontSize = "30px";
+                            windP.setAttribute("class", "max-lg:text-sm max-sm:text-sm");
+                            
 
                             // humidity
                             const humidP = document.getElementById("humidity");
                             const humidity = liveWeather[0].main.humidity;
                             humidP.innerHTML = `  ${Math.round(humidity)} %`;
-                            humidP.setAttribute("class", "max-lg:text-sm");
-                            humidP.style.fontSize = "30px";
+                            humidP.setAttribute("class", "max-lg:text-sm max-sm:text-sm");
+                            
 
                             
                             // five day forecasts array passing to the callback function
@@ -242,7 +242,7 @@ window.onload = function() {
 
                         }).catch((error) => {
                             const forecastDiv = document.getElementById("five-forecast");
-                            forecastDiv.innerHTML = "<h1 style='text-align: center;'>SORRY, NO DATA FOUND!!! Try leter...</h1>";
+                            forecastDiv.innerHTML = "<h1 style='text-align: center; margin:0 auto'>SORRY, NO DATA FOUND!!! Try leter...</h1>";
                             forecastDiv.style.color = "red";
                             forecastDiv.style.textAlign = "center";
                         })  
@@ -295,17 +295,17 @@ window.onload = function() {
                     const forcastDivs = document.createElement("div");
                     // temperature
                     const tempP = document.createElement("p");
-                    tempP.innerHTML = `<i class="fa-solid fa-temperature-high" style="color: yellow; font-size:15px"></i> ${Math.trunc(x.main.temp)}`;
+                    tempP.innerHTML = `<i class="fa-solid fa-temperature-high" style="color: yellow; font-size:15px"></i> ${Math.trunc(x.main.temp)}&deg`;
                     tempP.style.textAlign = "center";
 
                     // wind
                     const windP = document.createElement("p");
-                    windP.innerHTML = `<i class="fa-solid fa-wind" style="color: black; font-size:15px"></i> ${Math.round(x.wind.speed)}`;
+                    windP.innerHTML = `<i class="fa-solid fa-wind" style="color: black; font-size:15px"></i> ${Math.round(x.wind.speed)} m/s`;
                     windP.style.textAlign = "center";
 
                     //humidity
                     const humidP = document.createElement("p");
-                    humidP.innerHTML = `<i class="fa-solid fa-droplet" style="color: black; font-size:15px"></i> ${Math.round(x.main.humidity)}`;
+                    humidP.innerHTML = `<i class="fa-solid fa-droplet" style="color: black; font-size:15px"></i> ${Math.round(x.main.humidity)} %`;
                     humidP.style.textAlign = "center";
                     
                     forcastDivs.appendChild(dateP);
@@ -437,7 +437,7 @@ window.onload = function() {
                             let hours = new Date().getHours();
                             partDayP.innerHTML = `${hours}`;
 
-                            if (hours > 12 && hours < 18) {
+                            if (hours >= 12 && hours < 18) {
                                 partDayP.innerHTML = 'Afternoon';
                             }
                             else if (hours >= 18 && hours < 20) {
@@ -570,17 +570,17 @@ window.onload = function() {
                         const forcastDivs = document.createElement("div");
                         // temperature
                         const tempP = document.createElement("p");
-                        tempP.innerHTML = `<i class="fa-solid fa-temperature-high" style="color: yellow; font-size:15px"></i> ${Math.trunc(x.main.temp)}`;
+                        tempP.innerHTML = `<i class="fa-solid fa-temperature-high" style="color: yellow; font-size:15px"></i> ${Math.trunc(x.main.temp)}&deg`;
                         tempP.style.textAlign = "center";
 
                         // wind
                         const windP = document.createElement("p");
-                        windP.innerHTML = `<i class="fa-solid fa-wind" style="color: black; font-size:15px"></i> ${Math.round(x.wind.speed)}`;
+                        windP.innerHTML = `<i class="fa-solid fa-wind" style="color: black; font-size:15px"></i> ${Math.round(x.wind.speed)} m/s`;
                         windP.style.textAlign = "center";
 
                         //humidity
                         const humidP = document.createElement("p");
-                        humidP.innerHTML = `<i class="fa-solid fa-droplet" style="color: black; font-size:15px"></i> ${Math.round(x.main.humidity)}`;
+                        humidP.innerHTML = `<i class="fa-solid fa-droplet" style="color: black; font-size:15px"></i> ${Math.round(x.main.humidity)} %`;
                         humidP.style.textAlign = "center";
 
                         forcastDivs.appendChild(dateP);
@@ -603,7 +603,9 @@ window.onload = function() {
                 
             },
                 (error) => {
-                    console.log("error", error)
+                    const forecastDiv = document.getElementById("five-forecast");
+                    forecastDiv.innerHTML = `<p style='text-align:center; font-size: 1.8rem; font-weight:bold; color:yellow; margin: 0 auto;'>${error}</p>`
+
                 }
             );
 
@@ -611,6 +613,9 @@ window.onload = function() {
         }
         else {
             console.log("Geolocation is not supported bt this browser")
+            const forecastDiv = document.getElementById("five-forecast");
+            forecastDiv.innerHTML = "<p style='text-align:center; font-size: 1.8rem; font-weight:bold; color:yellow; margin: 0 auto;'>Geolocation is not supported by this browser</p>"
+
         }
 
 

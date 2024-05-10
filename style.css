@@ -24,7 +24,7 @@ body {
 }
 
 .nav h1 {
-    color: skyblue;
+    color: yellow;
     text-align: center;
 }
 
@@ -293,6 +293,102 @@ form button:hover {
         width: 50%;
         letter-spacing: 0.2rem;
     }
+   
+}
+
+
+/* media for 640px */
+@media (max-width: 640px) {
+    #details {
+        height: auto;
+    }
+    .container {
+        height: auto;
+    }
+    #button-div {
+        height: 19%;
+    }
+
+    #current-location {
+        width: 90%;
+    }
+
+    /* dropdown style */
+    #dropdown {
+        /* background-color:transparent; */
+        bottom: 17%;
+        left: 8%;
+        height: 40%;
+        width: 56%;
+    }
+
+    #dropdown>p {
+        width: auto;
+        height: auto;
+        font-size: larger;
+        font-weight: bold;
+        background-color: rgba(214, 225, 218, 0.74);
+    }
+
+    /* five forecast div style */
+    #five-forecast {
+        padding: 0px;
+    }
+
+    #five-forecast>div {
+        height: 77%;
+        width: 40%;
+        padding: 1px;
+        border-radius: 15px;
+        transition: all 0.2s linear;
+        font-size: 8px;
+        font-weight: bold;
+    }
+
+    #five-forecast>div:nth-child(1) {
+        background-color: green;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    #five-forecast>div:nth-child(2) {
+        background-color: rgb(223, 37, 37);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    #five-forecast>div:nth-child(3) {
+        background-color: rgb(38, 122, 155);
+        color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    #five-forecast>div:nth-child(4) {
+        background-color: rgb(127, 178, 33);
+        color: rgb(0, 0, 0);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    #five-forecast>div:nth-child(5) {
+        background-color: rgb(115, 47, 193);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    #five-forecast>div:nth-child(6) {
+        background-color: rgb(31, 146, 156);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
    
 }
 
