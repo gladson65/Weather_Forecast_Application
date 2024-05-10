@@ -21,7 +21,7 @@
     <header>
         <!-- nav section -->
         <div class="nav">
-            <h1 class="pt-1 text-3xl">Weather App</h1>
+            <h1 class="pt-1 text-3xl">Weather Track</h1>
         </div>
     </header>
 
@@ -32,11 +32,11 @@
             <!-- search section -->
             <div class="search-div relative max-sm:h-64 max-lg:w-full max-sm:gap-y-9">
                 <form action="#">
-                    <input type="text" class="inputValue bg-neutral-900 max-lg:h-12 max-sm:h-8 " id="city" placeholder="Search City">
-                    <button type="button" class="bg-lime-500 max-lg:h-12 max-sm:h-8"  id="search-btn">Search</button>
-                    <button type="button" class="bg-lime-500 max-lg:h-12 max-sm:h-8" id="Refresh-btn">Refresh</button>
+                    <input type="text" class="inputValue focus:outline-8 focus:outline-sky-500 bg-neutral-900 max-lg:text-bold max-lg:h-12 max-sm:h-8 " id="city" placeholder="Search City">
+                    <button type="button" class="bg-lime-500 max-lg:h-12 max-sm:h-8 max-sm:text-sm"  id="search-btn">Search</button>
+                    <button type="button" class="bg-lime-500 max-lg:h-12 max-sm:h-8 max-sm:text-sm" id="Refresh-btn">Refresh</button>
                 </form>
-                <div id="dropdown" class="absolute z-50 left-3 bottom-4 flex flex-col justify-start text-center text-white">
+                <div id="dropdown" class="absolute left-3 bottom-4 flex flex-col justify-start text-center text-white">
                     
                 </div>
                 <div id="button-div">
@@ -107,7 +107,7 @@
                     
                     <div id="info" class="text-center max-sm:relative max-sm:bottom-4 max-lg:h-40 rounded-2xl text-zinc-200 font-bold flex flex-col justify-evenly items-center">
                         <p ><span id="toDay" class="max-lg:mb-2" style="color: #FFD43B; font-weight:bold;"></span>  <span id="partDay"></span></p>
-                        <p class="max-sm:text-sm"> <i class="fa-solid fa-temperature-high max-lg:text-xl max-lg:mb-2 max-lg:mt-2 max-sm:text-sm" style="color: red; font-size:24px"></i> <span id='temp' class="max-sm:text-sm"> Temperature</span></p>
+                        <p class="max-sm:text-sm max-lg:text-8"> <i class="fa-solid fa-temperature-high max-lg:text-xl max-lg:mb-2 max-lg:mt-2 max-sm:text-sm" style="color: red; font-size:24px"></i> <span id='temp' class="max-sm:text-sm"> Temperature</span></p>
                         <p class="max-sm:text-sm"> <i class="fa-solid fa-wind max-lg:text-base max-lg:mb-2 max-lg:mt-2 max-sm:text-sm" style="color: #FFD43B; font-size:24px"></i><span id='wind' class="max-sm:text-sm">  Wind Speed</span> </p>
                         <p class="max-sm:text-sm"> <i class="fa-solid fa-droplet max-lg:text-base max-lg:mb-2 max-lg:mt-2 max-sm:text-sm" style="color: #74C0FC; font-size:24px"></i><span id="humidity" class="max-sm:text-sm">  Humidity</span> </p>
                     </div>

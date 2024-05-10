@@ -116,7 +116,7 @@ window.onload = function() {
                                 }
                             })
 
-                            console.log(fiveForcasts);
+                            // console.log(fiveForcasts);
                             
                             const todayForcast = [];
                             const today = data.list.filter((todayReport) => {
@@ -237,7 +237,7 @@ window.onload = function() {
                             
                            
                             
-                            console.log(liveWeather)
+                            // console.log(liveWeather)
 
 
                         }).catch((error) => {
