@@ -1,17 +1,17 @@
 # Weather Forecast App
 
-Hello, this is a simple weather forecast app in HTML, CSS, Tailwind CSS and JavaScript.
+Hello, this is a simple weather forecast app called 'Weather Track' in HTML, CSS, Tailwind CSS and JavaScript.
 
 ## Features in this app
 
-1. In this app you can get live weather report of the current day.
-2. It shows Five Days Weather Forcasting.
-3. Search weather by using current location.
+1. In this app you can get live weather reports of the current day.
+2. It shows Five Days Weather Forecasting.
+3. Search for weather by using the current location.
 4. Search weather by City Name.
-5. It shows weather temperature, wind speed, humidity, visibility, weather description, date, weather icon and many more information.
+5. It shows weather temperature, wind speed, humidity, visibility, weather description, date, weather icon and s
 6. It handels errors like _Empty Input_, _Invalid Input_, _No Fetch Data_.
-7. Five recent search dropdown list. default city value is 'Kolkata'. 
-8. searched data stores into localstorage.
+7. Five recent search dropdown lists. default city value is 'Kolkata'. 
+8. Search data stores into local storage.
 
 # How to open this application
 
@@ -30,16 +30,16 @@ Hello, this is a simple weather forecast app in HTML, CSS, Tailwind CSS and Java
 
 # Data Source
 
-    - Source is **Open Weather Api**
+    - Source is **Open Weather API**
     - It updates data every three hours.
-    - It updates next day data at 6 AM in the morning. So in the current weather section you might be see 4 day forecast in between 1 AM to 6 AM. Meanwhile if you check weather report by clicking "my current location" you can see 5 boxes, first box is the present day only. Because this API gives only four days forecast in between 1 AM to 6 AM. After 6 AM as the day updates it shows the next five day forecast.   
+    - It updates next-day data at 6 AM. So in the current weather section, you might see 4 day forecast between 1 AM to 6 AM. Meanwhile, if you check the weather report by clicking "my current location" you can see 5 boxes, the first box is the present day only. Because this API gives only a four-day forecast between 1 AM to 6 AM. After 6 AM as the day updates, it shows the next five-day forecast.   
 
-# How this app fetch data from API:
+# How this app fetches data from API:
     
     1. Takes a city name.
-    2. Gets Longitude and Latitude of the city.
-    3. Gets weather report on the basis of longitude and latitude of the city.
-    4. Stores every day object in an array. Every object is unique. Because it is filtering by dates.
+    2. Gets the Longitude and Latitude of the city.
+    3. Gets weather report based on the longitude and latitude of the city.
+    4. Stores everyday objects in an array. Every object is unique. Because it is filtering by dates.
 
 # GitHub link
 
@@ -47,5 +47,6 @@ Hello, this is a simple weather forecast app in HTML, CSS, Tailwind CSS and Java
 
 
 # Project Image
+![Screenshot (159)](https://github.com/gladson65/Weather_Forecast_Application/assets/58826910/2160e9ef-70e8-4cc8-b390-f274aaadded1)
 
 
