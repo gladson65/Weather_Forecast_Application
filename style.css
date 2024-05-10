@@ -24,15 +24,18 @@ body {
 }
 
 .nav h1 {
+    font-family: fantasy;
     color: black;
     text-align: center;
     text-shadow: -2px -3px 4px rgb(252, 252, 252), -2px -4px 4px rgb(250, 252, 252);
+    letter-spacing: 0.2rem;
 }
 
 /* forecast div heading */
 #heading {
     color: black;
     text-shadow: -2px -3px 4px rgb(252, 252, 252), -2px -4px 4px rgb(250, 252, 252);
+    letter-spacing: 0.2rem;
 }
 
 /* weather section style */
@@ -530,6 +533,10 @@ form button:hover {
 @media (min-width: 1200px) {
     #desktopDiv {
         display: block;
+    }
+
+    .temP {
+        font-size: 17px;
     }
 }
 

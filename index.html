@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gladson Routh">
+    <meta name="keywords" content="WEATHERFORECASTAPP HTMLCSSJAVASCRIPTWEATHERAPP HTML CSS TAILWINDCSS JAVASCRIPTPROJECT">
+
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -11,9 +14,13 @@
     <link rel="icon" type="image/x-icon" href="./images/fav.png">
     <!-- Tailwind CDN  -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- google font link -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pacifico&family=Satisfy&display=swap" rel="stylesheet">
     <!-- external css link -->
     <link rel="stylesheet" href="./style.css">
-    <title>Weather App</title>
+
+    <title>Weather Track</title>
+
 </head>
 <body>
     
@@ -50,22 +57,22 @@
                 <!-- outer circle start -->
                 <div class="outer">
                     <div class="google">
-                        <img src="./circular_images/weather1.jpg" alt="google-pic">
+                        <img src="./circular_images/weather1.jpg" alt="weather-pic">
                     </div>
                     <div class="meta">
-                        <img src="./circular_images/weather2.jpg" alt="meta-pic">
+                        <img src="./circular_images/weather2.jpg" alt="weather-pic">
                     </div>
                     <div class="netflix">
-                        <img src="./circular_images/weather3.png" alt="google-pic">
+                        <img src="./circular_images/weather3.png" alt="weather-pic">
                     </div>
                     <div class="microsoft">
-                        <img src="./circular_images/weather4.jpg" alt="microsoft-pic">
+                        <img src="./circular_images/weather4.jpg" alt="weather-pic">
                     </div>
                     <div class="aws">
-                        <img src="./circular_images/weather5.png" alt="aws-pic">
+                        <img src="./circular_images/weather5.png" alt="weather-pic">
                     </div>
                     <div class="mailchimp">
-                        <img src="./circular_images/weather6.jpg" alt="docker-pic">
+                        <img src="./circular_images/weather6.jpg" alt="weather-pic">
                     </div>
                 
                     <!-- middle circle start -->
@@ -107,7 +114,7 @@
                     
                     <div id="info" class="text-center max-sm:relative max-sm:bottom-4 max-lg:h-40 rounded-2xl text-zinc-200 font-bold flex flex-col justify-evenly items-center">
                         <p ><span id="toDay" class="max-lg:mb-2" style="color: #FFD43B; font-weight:bold;"></span>  <span id="partDay"></span></p>
-                        <p class="max-sm:text-sm max-lg:text-8"> <i class="fa-solid fa-temperature-high max-lg:text-xl max-lg:mb-2 max-lg:mt-2 max-sm:text-sm" style="color: red; font-size:24px"></i> <span id='temp' class="max-sm:text-sm"> Temperature</span></p>
+                        <p class="temP max-sm:text-sm max-lg:text-8"> <i class="fa-solid fa-temperature-high max-lg:text-xl max-lg:mb-2 max-lg:mt-2 max-sm:text-sm" style="color: red; font-size:24px"></i> <span id='temp' class="max-sm:text-sm"> Temperature</span></p>
                         <p class="max-sm:text-sm"> <i class="fa-solid fa-wind max-lg:text-base max-lg:mb-2 max-lg:mt-2 max-sm:text-sm" style="color: #FFD43B; font-size:24px"></i><span id='wind' class="max-sm:text-sm">  Wind Speed</span> </p>
                         <p class="max-sm:text-sm"> <i class="fa-solid fa-droplet max-lg:text-base max-lg:mb-2 max-lg:mt-2 max-sm:text-sm" style="color: #74C0FC; font-size:24px"></i><span id="humidity" class="max-sm:text-sm">  Humidity</span> </p>
                     </div>

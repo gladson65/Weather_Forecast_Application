@@ -13,6 +13,12 @@ Hello, this is a simple weather forecast app called 'Weather Track' in HTML, CSS
 7. Five recent search dropdown lists. default city value is 'Kolkata'. 
 8. Search data stores into local storage.
 
+# Responsiveness
+
+    - iPhone SE
+    - iPad mini
+    - Desktop
+
 # How to open this application
 
     - It has three main files:
@@ -27,6 +33,7 @@ Hello, this is a simple weather forecast app called 'Weather Track' in HTML, CSS
    
     1. Font Awesome icon library (CDN link)
     2. Tailwind CSS framework (CDN link)
+    3. Google Font
 
 # Data Source
 
