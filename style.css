@@ -24,8 +24,9 @@ body {
 }
 
 .nav h1 {
-    color: yellow;
+    color: rgb(0, 255, 255);
     text-align: center;
+    text-shadow: -2px -3px 4px rgb(252, 252, 252), -2px -4px 4px rgb(250, 252, 252);
 }
 
 
@@ -45,7 +46,10 @@ body {
     justify-content: space-between;
     align-content: flex-start;
     gap: 10px;
-    background-color: rgba(155, 225, 243, 0.354);
+    background-image: url(./images/search-back2.jpg);
+    background-repeat: no-repeat;
+    background-position:center;
+    /* background-color: rgba(155, 225, 243, 0.354); */
     border-radius: 40px;
     padding: 20px;
 }
@@ -58,9 +62,10 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 50px;
-    background-color: rgba(252, 252, 252, 0.498);
     border-radius: 20px;
     padding: 10px;
+    /* background-color: aliceblue; */
+    backdrop-filter: blur(20px);
 }
 
 .search-div form {
@@ -269,6 +274,247 @@ form button:hover {
     animation: loading 2s linear infinite;
 }
 
+/* desktop div */
+#desktopDiv {
+    width : 26%;
+    height: 31%;
+    display: none;
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 55%;
+    left: 10%;
+    border-radius: 15px;
+
+}
+
+
+/* outer circle design */
+#desktopDiv .outer {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 50s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -6%;
+    left: 18%;
+    box-shadow: 5px 5px 15px 10px black;
+}
+
+.google {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    top: 90%;
+    left: 40%;
+    animation: spreadDown 2s linear infinite alternate;
+}
+
+.google img {
+    width: 100%;
+    height: 100%;
+    animation: antiClockwise 50s linear infinite;
+    animation-fill-mode: both;
+}
+
+.meta {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 70%;
+    left: 87%;
+    animation: spread 2s linear infinite alternate;
+}
+
+.meta img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    animation: antiClockwise 50s linear infinite;
+    animation-fill-mode: both;
+}
+
+.netflix {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 70%;
+    left: -1%;
+    animation: spreadLeft 2s linear infinite alternate;
+}
+
+.netflix img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    animation: antiClockwise 50s linear infinite;
+    animation-fill-mode: both;
+}
+
+.microsoft {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    top: -9%;
+    left: 42%;
+    animation: spreadUp 2s linear infinite alternate;
+}
+
+.microsoft img {
+    width: 100%;
+    height: 100%;
+    animation: antiClockwise 50s linear infinite;
+    animation-fill-mode: both;
+}
+
+.aws {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 20%;
+    left: -5%;
+    animation: spreadLeft 2s linear infinite alternate;
+}
+
+.aws img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    animation: antiClockwise 50s linear infinite;
+    animation-fill-mode: both;
+}
+
+.mailchimp {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 18%;
+    left: 86%;
+    animation: spread 2s linear infinite alternate;
+}
+
+.mailchimp img {
+    width: 100%;
+    height: 100%;
+    animation: antiClockwise 50s linear infinite;
+    animation-fill-mode: both;
+
+}
+
+
+/* middle circle design */
+.middle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: rgba(107, 254, 242, 0.775);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* inner circle design */
+.inner {
+    width: 110px;
+    height: 110px;
+    position: relative;
+    border-radius: 50%;
+    animation: antiClockwise 25s linear infinite;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.python {
+    position: absolute;
+    height: 65px;
+    width: 68px;
+    top: -28%;
+    left: 20%;
+    animation: spreadUp 2s linear infinite alternate;
+}
+
+.python img {
+    width: 100%;
+    height: 100%;
+    animation: rotate 50s linear infinite;
+}
+
+.django {
+    position: absolute;
+    height: 25px;
+    width: 40px;
+    top: 90%;
+    left: 30%;
+    animation: spreadDown 2s linear infinite alternate;
+}
+
+.django img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    animation: rotate 50s linear infinite;
+}
+
+.js {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 33%;
+    left: -17%;
+    animation: spreadLeft 2s linear infinite alternate;
+}
+
+.js img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    animation: rotate 50s linear infinite;
+}
+
+.react {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 34%;
+    left: 88%;
+    animation: spread 2s linear infinite alternate;
+}
+
+.react img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    animation: rotate 50s linear infinite;
+}
+
+/* center circle design */
+.center {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: yellow;
+}
+
+.center img {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    border-radius: 50%;
+    animation: rotate 50s linear infinite;
+}
+
+
+
+@media (min-width: 1200px) {
+    #desktopDiv {
+        display: block;
+    }
+}
+
 
 @media(min-width:768px) and (max-width:1024px) {
     #dropdown {
@@ -404,5 +650,66 @@ form button:hover {
 @keyframes run {
     100% {
         transform: rotate(360deg);
+    }
+}
+
+
+/* cercular animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes antiClockwise {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+
+/* spread animation section */
+@keyframes spread {
+
+    100% {
+        transform: translateX(15px);
+    }
+}
+
+@keyframes spreadUp {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes spreadLeft {
+    0% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(-15px);
+    }
+}
+
+@keyframes spreadDown {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(15px);
     }
 }
