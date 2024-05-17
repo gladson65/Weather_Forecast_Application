@@ -195,7 +195,7 @@ window.onload = function() {
 
                             // visibility
                             const visibleP = document.createElement("p");
-                            const visibility = Math.trunc(liveWeather[0].visibility / 1000);
+                            const visibility = Math.round(liveWeather[0].visibility / 1000);
                             visibleP.innerHTML = `visibility: ${visibility} Km`;   
                             describP.appendChild(visibleP);
                            
@@ -203,14 +203,14 @@ window.onload = function() {
                             // temperature
                             const temp = document.getElementById("temp");
                             temperature = liveWeather[0].main.temp;
-                            temp.innerHTML = `  ${Math.trunc(temperature)}&deg`
+                            temp.innerHTML = `  ${Math.round(temperature)}&deg`
                             temp.setAttribute("class", "max-lg:text-sm max-sm:text-sm");
                             
 
                             // wind Speed
                             const windP = document.getElementById("wind");
                             const wind = liveWeather[0].wind.speed;
-                            windP.innerHTML = `  ${Math.round(wind)} m/s`;
+                            windP.innerHTML = `  ${Math.round((wind))} m/s`;
                             windP.setAttribute("class", "max-lg:text-sm max-sm:text-sm");
                             
 
